@@ -1,0 +1,23 @@
+{
+  "name": "limitless-stats",
+  "version": "1.0.0",
+  "description": "Generates statistics for Limitless Online Series",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp0cker/limitless-stats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/comp0cker/limitless-stats/issues"
+  },
+  "homepage": "https://github.com/comp0cker/limitless-stats#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.0"
+  }
+}
