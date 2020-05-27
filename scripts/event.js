@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const { apiUrlBase, apiToken } = require('../config');
-const standings = require('../schemas/standings');
+const event = require('../schemas/event');
 
 module.exports = {
     // todo - make this into graph QL
@@ -11,7 +11,7 @@ module.exports = {
 
         return data.entities.event[0].id;
     },
-    fetchStandings: async (id) => {
+    fetchEvent: async (id) => {
         const response = await fetch(apiUrlBase, {
             method: 'POST',
             headers: {
@@ -20,12 +20,17 @@ module.exports = {
                 Authorization: `Bearer ${apiToken}`,
             },
             body: JSON.stringify({
-                query: standings.query,
-                operationName: standings.operationName,
-                variables: standings.variables(id, 1),
+                query: event.query,
+                operationName: event.operationName,
+                variables: event.variables(id, 1),
             }),
         });
-        const data = await response.json();
+        let data = await response.json();
+
+        // if it's a valid response actually get the data
+        if (data.data) {
+            data = data.data;
+        }
 
         return data;
     },
